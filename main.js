@@ -1,3 +1,4 @@
+
 let menuVisible = false;
 //Funcion que oculta o muestra el menu
 
