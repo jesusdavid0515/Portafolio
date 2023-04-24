@@ -269,6 +269,7 @@ html{
     color: #fff;
     position: relative;
     z-index: 10;
+    text-decoration: none;
 }
 .sobremi button a{
     color: #fff;
