@@ -315,21 +315,21 @@
 
     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
-            <form action="https://formsubmit.co/jesusdavidmolina.developer@gmail.com" method="POST">
+            <form onsubmit="return validacion()" id="form" action="https://formsubmit.co/jesusdavidmolina.developer@gmail.com" method="POST">
                 <h2>CONTACTO</h2>
                 <div class="f">
                     <!-- FORMULARIO -->
                     <div class="col">
-                        <input type="text" name="name" placeholder="Tú Nombre" required>
-                        <input type="tel" name="phone" placeholder="Número Telefonico" required>
-                        <input type="email" name="email" placeholder="Direccion de Correo" required>
-                        <textarea name="message" id="" cols="10" rows="5" placeholder="Mensaje" required></textarea>
-                        <button type="submit">
+                        <input type="text" name="name" id="name" placeholder="Tú Nombre" required>
+                        <input type="tel" name="phone" id="numero" placeholder="Número Telefonico" required>
+                        <input type="email" name="email" id="email" placeholder="Direccion de Correo" required>
+                        <textarea name="message" id="mesagge" cols="10" rows="5" placeholder="Mensaje" required></textarea>
+                        <button type="submit" id="button" >
                             Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
                             <span class="overlay"></span>
                         </button>
 
-                        <input type="hidden" name="_next" value="https://jesusdavid05.github.io/Portafolio/#contacto">
+                        <input id="refresh" type="hidden" name="_next" value="https://jesusdavid05.github.io/Portafolio/#contacto">
                         <input type="hidden" name="_captcha" value="false">
                     </div>
                 </div>
@@ -337,6 +337,9 @@
         </div>
     </section>
 
+    <div class="modal" id="modal">
+        
+    </div>
     <!-- FOOTER  -->
 
     <footer>
