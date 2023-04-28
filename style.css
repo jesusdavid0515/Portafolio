@@ -919,7 +919,7 @@ footer .arriba{
     }
 }
 
-.modalBackground {
+.abrir, .cerrar{
     z-index: 11;
     background: rgba(32,35,41,.8);
     position: fixed;
@@ -932,7 +932,15 @@ footer .arriba{
     align-items: center;
     color: white;
 }
-.modalBackground i {
+.abrir i {
     margin-right: 12px;
     font-size: 50px;
+}
+.cerrar i {
+    margin-right: 12px;
+    font-size: 50px;
+}
+
+#abrirModal, #errorModal {
+    display: none;
 }

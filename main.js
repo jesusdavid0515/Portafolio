@@ -1,75 +1,81 @@
+const email = document.getElementById('email');
+const numero = document.getElementById('numero');
+const mensaje = document.getElementById('mesagge');
+const nombre = document.getElementById('name');
 const modal = document.getElementById('modal');
-const form  = document.getElementById('form');
-const buttonMensaje = document.getElementById('button');
+const form = document.getElementById('form');
+const butttonMensaje = document.getElementById('button');
 
-buttonMensaje.addEventListener('click', () => {
-    if(validacion == false){
-        errorModal();
-    } else {
-        abrirModal();
-        cerrarModal();
+form.addEventListener('submit', e=>{
+
+    let formValido = true;
+
+    let valueEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    let valueNumero = /^\d{10}$/
+    console.log(e)
+
+    if (nombre.value.length < 5) {
+        e.preventDefault();
+        formValido = false;
     }
-    
-});
+    if (!valueNumero.test(numero.value)) {
+        e.preventDefault();
+        formValido = false;
+    }
+    if (mensaje.value.length < 5) {
+        e.preventDefault();
+        formValido = false;
+    }
+    if (!valueEmail.test(email.value)) {
+        e.preventDefault();
+        formValido = false;
+    } 
+    if(!formValido){
+        errorModal()
+    }
+    else {
+        formValido = true;
+        abrirModal();
+    }
+})
 
-const abrirModal = ()=> {
-    modal.innerHTML = `
-    <h2 class='modalBackground'> <p><i class="fa-solid fa-circle-check" style="color: #1cb698;"></i></p>Mensaje Enviado</h1>
-    `;
+
+const abrirModal = () => {
+    document.getElementById('abrirModal').style.display = 'block';
+    cerrarModal();
 }
 
 const errorModal = () => {
-    modal.innerHTML = `
-    <h2 class='modalBackground'> <p><i class="fa-solid fa-circle-exclamation" style="color: #1cb698;"></i></p>Error Revisa El Formulario</h1>
-    `;
+    document.getElementById('errorModal').style.display = 'block';
+    cerrarErrorModal();
 }
 
-const cerrarModal = ()=> {
-    setTimeout(function(){
-        modal.style.display = 'none'
+const cerrarModal = () => {
+    setTimeout(function () {
+        document.getElementById('abrirModal').style.display = 'none';
     }, 3000)
 }
 
-function validacion() {
-    let formValido = true;
-    let nombre = document.getElementById('name');
-
-    if(nombre === null || nombre.length < 5) {
-        formValido = false;
-    }
-
-    let numero = document.getElementById('numero');
-    if(isNaN(numero) || numero.length < 9){
-        formValido = false;
-    }
-
-    let mensaje = document.getElementById('mesagge');
-    if(mensaje === null || nombre.length < 5){
-        formValido = false;
-    } 
-
-    let email = document.getElementById('email');
-    if(email.length < 10) {
-        formValido = false;
-    }
-
-    return formValido;
+const cerrarErrorModal = () => {
+    setTimeout(function () {
+        document.getElementById('errorModal').style.display = 'none';
+    }, 3000)
 }
 
 let menuVisible = false;
 //Funcion que oculta o muestra el menu
 
-function mostrarOcultarMenu(){
-    if(menuVisible){
+function mostrarOcultarMenu() {
+    if (menuVisible) {
         document.getElementById("nav").classList = "";
         menuVisible = false;
-    }else{
-        document.getElementById("nav").classList ="responsive"
+    } else {
+        document.getElementById("nav").classList = "responsive"
         menuVisible = true;
     }
 }
 
-function seleccionar(){
+function seleccionar() {
     //oculto el menu una vez que selecciono una opcion
     document.getElementById("nav").classList = "";
     menuVisible = false;
@@ -77,10 +83,10 @@ function seleccionar(){
 
 //Funcion que aplica las aminaciones de las habilidades 
 
-function efectoHabilidades(){
+function efectoHabilidades() {
     let skills = document.getElementById("skills");
     let distancia_skills = window.innerHeight - skills.getBoundingClientRect().top;
-    if(distancia_skills >= 300){
+    if (distancia_skills >= 300) {
         let habilidades = document.getElementsByClassName("progreso");
         habilidades[0].classList.add("javascript");
         habilidades[1].classList.add("htmls");
@@ -95,6 +101,6 @@ function efectoHabilidades(){
 
 //defecto el scrolling para aplicar la animacion de la barrade habiladades
 
-window.onscroll = function(){
+window.onscroll = function () {
     efectoHabilidades();
 }
